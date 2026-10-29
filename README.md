@@ -1,360 +1,214 @@
+<div align="center">
+
+<img src="screenshots/app-showcase.png" alt="Unit Converter V2.0.0 app showcase" width="100%" />
+
 # Unit Converter V2.0.0
 
-A native Android unit converter built with Kotlin, Jetpack Compose, and
-Material 3. This repository contains the source code for version 2.0.0.
+**Convert units. Keep it simple.**
 
-- **Application ID:** `com.kirilliodas.unitconverter`
-- **Version:** `2.0.0` (version code `1`)
-- **Minimum Android version:** Android 8.0 (API 26)
-- **Target SDK:** 36
-- **Build system:** Gradle 8.13 with the Gradle Wrapper
+A native Android unit converter built with **Kotlin**, **Jetpack Compose** and **Material 3**. Fast, customizable, and designed to work offline.
 
-The app provides offline unit conversion, a searchable unit catalog,
-favorites, pinned conversions, history, configurable precision, and
-display settings. The catalog currently contains 17 categories and
-110 units.
+[![Latest release](https://img.shields.io/github/v/release/kiriliodas/Unit-Converter-V2?style=flat-square&label=latest%20release)](https://github.com/kiriliodas/Unit-Converter-V2/releases/latest)
+[![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=flat-square&logo=android&logoColor=white)](#)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.2.21-7F52FF?style=flat-square&logo=kotlin&logoColor=white)](#)
+[![Third-party notices](https://img.shields.io/badge/third--party-notices-lightgrey?style=flat-square)](THIRD_PARTY_NOTICES.md)
 
-## Application status
+[**Download the APK**](https://github.com/kiriliodas/Unit-Converter-V2/releases/latest) · [Browse the source](https://github.com/kiriliodas/Unit-Converter-V2) · [Report a bug](https://github.com/kiriliodas/Unit-Converter-V2/issues)
 
-Version 2.0.0 has been built and validated on Windows. Unit tests,
-Android lint, debug packaging, and release packaging completed
-successfully. The release APK was installed and tested on a Galaxy A23 5G.
+</div>
 
-The repository includes the Gradle Wrapper and its required files.
-Release signing uses a developer-owned keystore that must remain outside
-version control.
-| Category | Units | Canonical base |
-|---|---:|---|
-| Length | 13 | meter |
-| Temperature | 4 | degree Celsius |
-| Fuel economy | 4 | liters per 100 km |
-| Mass | 7 | kilogram |
-| Area | 7 | square meter |
-| Volume | 9 | liter |
-| Speed | 5 | meter per second |
-| Time | 6 | second |
-| Digital storage | 10 | byte |
-| Data rate | 8 | bit per second |
-| Pressure | 8 | pascal |
-| Energy | 7 | joule |
-| Power | 5 | watt |
-| Force | 4 | Newton |
-| Frequency | 5 | hertz |
-| Angle | 4 | degree |
-| Torque | 4 | Newton meter |
+---
 
-### Phase C8 interface
+## ✨ Made for everyday conversions
 
-- Four bottom destinations—Convert, Units, Favorites, and History—plus
-  a full-screen Settings route opened only from Convert. A saveable
-  `MainNavigationState` enum holder is now the only destination source;
-  each bottom-bar click calls that stable holder and reads the live
-  destination at click time. This replaces C6's saveable string, derived
-  enum, and captured reselection comparison. JVM regression tests cover
-  every ordered destination pair, repeated current-destination clicks,
-  requested route sequences, and rapid cycling through all four tabs.
-- The bar itself remains a native Compose floating capsule with
-  side/bottom breathing room, system navigation-bar padding, a
-  translucent monochrome surface, border, shadow, and tab semantics.
-  C8 replaces four separately fading item backgrounds with exactly one
-  shared ink pill that slides horizontally (220 ms,
-  FastOutSlowIn) between the equal-width destinations, including in
-  RTL. Its animated offset is read in the layout phase, so the pill can
-  retarget during rapid taps without recomposing the capsule for every
-  animation frame. Scaffold still measures the whole floating slot.
-- Convert no longer shows the horizontal category-chip strip under its
-  header. Header, optional pinned conversions, input panel,
-  precision/swap seam, high-contrast result slab, and complete
-  conversions list remain. Category/unit selection remains available
-  through the destination Unit picker sheets and Units. The
-  validated sign toggle, copy-only history rule, Use-as-input
-  formatting, swap semantics, and equivalents-of-one list behavior are
-  unchanged.
-- Units category cards, shared unit tiles, and search rows reserve
-  font-scale-aware symbol/title/badge zones, giving consistent card
-  heights and aligned baselines without a fixed height that clips
-  larger text. The Settings entry uses the filled local Material
-  Symbols Rounded gear instead of the thinner outlined gear; no icon
-  dependency was added.
-- Targeted performance work keeps IME inset reads inside the small
-  bottom-bar host instead of invalidating the converter root, disables
-  redundant full-screen `AnimatedContent` size transforms, caches
-  history-row evaluation and repeated search/pin derivations, reuses
-  an already-computed destination conversion inside the evaluator, and
-  stabilizes formatter/bottom-destination allocations. The successful
-  C7 animations and lazy-list structure remain.
-- The converter unit picker no longer requests focus or opens the
-  keyboard on entry. Its picker-only compact tiles are about 80 dp
-  high instead of 130 dp, in an adaptive grid (two columns on ordinary
-  phones), while reserving two name lines and retaining the current
-  ink/check state and accessible role description. The Units browser
-  keeps its fuller badge tiles.
-- The Convert seam uses independent overlays: the precision pill lives
-  in the start region and the 48 dp swap button is aligned to the seam
-  end itself, so changing Smart/Fixed/Scientific cannot move swap. The
-  pill may wrap to three lines at large font sizes instead of truncating.
-- Favorite hearts and pin toggles no longer draw circular containers
-  behind their glyphs. The active heart remains red; the active pin is
-  a restrained blue (darker blue on light panels and a brighter blue
-  on dark panels/result slab) with filled/outlined state glyphs and
-  the same 48 dp targets/animations.
-- Settings now contains persisted **System / Light / Dark** theme
-  choices and a language picker. Language defaults to the phone
-  language and can be set independently to French, English, Spanish,
-  Portuguese, German, Italian, Simplified Chinese, Japanese, Korean,
-  or Arabic. Each offered language has a complete offline Android
-  `strings.xml` (229 strings plus the units plural); Arabic uses the
-  existing RTL-capable layouts and auto-mirrored back arrow. A discreet
-  localized “Created by Blood” signature closes Settings only.
-- Both manual themes retain the C7 neutral ramp and dynamic color
-  stays disabled. Material Symbols Rounded glyphs are bundled as local
-  vector drawables (Google, Apache License 2.0), and typography uses
-  the system Roboto-family fallback rather than adding a font asset.
+- **17 categories, 110 units** covering everything from length and temperature to data rates, pressure, energy and torque.
+- **Instant results** with a conversion engine designed for accurate calculations.
+- **Find units quickly** with a searchable unit catalog.
+- **Save what matters** with favorites, pinned conversions and a history of copied results.
+- **Choose your precision** with Smart, Fixed and Scientific formatting.
+- **Make it yours** with System, Light and Dark themes, plus 10 interface languages.
+- **Works offline** with your library and settings stored locally on your device.
 
-### Favorites, pinned conversions, and history
+## 📱 Screenshots
 
-- A favorite is one directed source-to-target unit pair in a category.
-  The red-filled heart on the result slab toggles the current pair.
-  Favorites are deduplicated and shown newest first; selecting one
-  restores its category and units while preserving the current input.
-- A pinned conversion is a favorite selected for quick access. The
-  blue-when-active pin beside the heart pins/unpins the current pair
-  (pinning also favorites it when necessary), and Favorites/History rows
-  expose the same heart/pin toggles. Pinned pairs are deduplicated,
-  shown newest-pinned first as symbol chips on Convert, and restore only
-  their category/units—the current numeric input remains editable.
-  Removing a favorite also removes its pin.
-- History follows the established copy-to-save rule: only explicitly
-  copying a valid result records its category, units, input, and
-  timestamp. Typing, invalid states, recompositions, and restores do
-  not create entries. History is newest first, deduplicated by the
-  full conversion and input, and bounded to 50 entries.
-- Favorites and History are separate bottom-navigation destinations;
-  History is grouped only for presentation into Today, Yesterday, and
-  Earlier. Restoring history also restores its saved input. History can
-  be cleared only after a localized confirmation; clearing history does
-  not delete favorites, pins, or display settings.
-- Persistence uses app-private `SharedPreferences` strings behind
-  small pure-Kotlin serializer/store abstractions. Library reads run on
-  `Dispatchers.IO`; writes are serialized through the same store and
-  use Android's asynchronous preference apply. Theme/language use a
-  separate `app_preferences_v1` key in that same private file, loaded
-  by `MainActivity` before composition for locale/theme application;
-  this intentionally does not alter the library payload. No dependency
-  was added, and no data leaves the device. The Phase C4 `UC_LIBRARY_V1`
-  header and `F`/`H` records are unchanged; Phase C5 adds optional
-  `P` precision and `N` pin records. A C4 payload therefore loads with
-  all favorites/history preserved, default Smart precision, and no
-  pins. Malformed optional records are ignored without discarding the
-  library.
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="screenshots/converter-main.png" alt="Main conversion screen" width="100%" />
+      <br /><b>Convert</b>
+      <br /><sub>A focused workspace for input and results.</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="screenshots/conversion-result.png" alt="Conversion result" width="100%" />
+      <br /><b>Clear results</b>
+      <br /><sub>Read the converted value and manage the current pair.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="screenshots/unit-selection.png" alt="Unit selection" width="100%" />
+      <br /><b>Find a unit</b>
+      <br /><sub>Browse categories or search the catalog.</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="screenshots/history-favorites.png" alt="History and favorites" width="100%" />
+      <br /><b>Your library</b>
+      <br /><sub>Keep favorite pairs, pin frequent conversions and revisit history.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="screenshots/settings.png" alt="Application settings" width="100%" />
+      <br /><b>Personalize</b>
+      <br /><sub>Set your theme, language and number precision.</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="screenshots/app-showcase.png" alt="Unit Converter showcase" width="100%" />
+      <br /><b>One simple toolkit</b>
+      <br /><sub>Conversion tools in a consistent, native Android interface.</sub>
+    </td>
+  </tr>
+</table>
 
-### Display precision and swap
+## 🧰 What's included?
 
-- **Smart** keeps the established presentation: at most 10 significant
-  figures, insignificant trailing zeros removed, and automatic
-  scientific notation for very large/small magnitudes.
-- **Fixed** displays exactly the selected number of decimal places,
-  from 0 through 12, including trailing zeros.
-- **Scientific** always uses normalized scientific notation and keeps
-  exactly the selected 0–12 digits after the decimal separator in the
-  mantissa. Actual negative zero is displayed without a sign, while a
-  genuinely non-zero `-1E-10` remains `-1E-10` in Smart mode.
-- All display rounding is HALF_UP and occurs only while formatting;
-  precision settings never alter the conversion engine's internal
-  `BigDecimal`, a stored history input, or a saved unit pair.
-- The precision pill on Convert opens these same settings in a bottom
-  sheet and applies changes immediately. This is only a relocation of
-  the Phase C5 controls.
-- The existing swap action exchanges only source and target units,
-  preserves category and input, and recalculates immediately. The
-  reversed pair remains a distinct directed favorite/pin.
+| Category | Units | Category | Units |
+|---|---:|---|---:|
+| Length | 13 | Temperature | 4 |
+| Fuel economy | 4 | Mass | 7 |
+| Area | 7 | Volume | 9 |
+| Speed | 5 | Time | 6 |
+| Digital storage | 10 | Data rate | 8 |
+| Pressure | 8 | Energy | 7 |
+| Power | 5 | Force | 4 |
+| Frequency | 5 | Angle | 4 |
+| Torque | 4 | | |
 
-### Phase C3 conversion conventions
+### Precision that fits the task
 
-- **Mass:** pound and ounce are international avoirdupois units
-  (1 lb = 0.45359237 kg exactly; 1 oz = 1/16 lb).
-- **Area:** 1 ft² = 0.09290304 m² exactly; 1 acre = 43,560 ft² =
-  4,046.8564224 m² exactly; 1 ha = 10,000 m².
-- **Volume / culinary:** Teaspoon, tablespoon, and cup are explicitly
-  **US customary**. They are neither metric spoons nor the 240 mL US
-  nutrition-label cup. From 1 US gallon = 3.785411784 L exactly:
-  1 US cup = 236.5882365 mL, 1 US tablespoon = 14.78676478125 mL, and
-  1 US Teaspoon = 4.92892159375 mL. 1 imperial gallon = 4.54609 L.
-- **Speed:** 1 mph = 0.44704 m/s exactly; 1 knot is one international
-  nautical mile (1,852 m exactly) per hour.
-- **Time:** a day is exactly 24 hours and a week exactly 7 days.
-  Months and years are deliberately absent because a fixed factor
-  would hide a calendar convention.
-- **Digital storage:** SI decimal prefixes are powers of 1,000
-  (kB, MB, GB, TB); IEC binary prefixes are powers of 1,024
-  (KiB, MiB, GiB, TiB). 1 byte = 8 bits.
-- **Data rate:** SI decimal prefixes only for bit/s and B/s families;
-  byte rates are exactly eight times the corresponding bit rates.
-  Symbols keep bits (`bit/s`, `Mbit/s`) distinct from bytes
-  (`B/s`, `MB/s`).
+- **Smart:** up to 10 significant figures, with trailing zeros removed and scientific notation used for very large or small values when appropriate.
+- **Fixed:** choose from 0 to 12 decimal places, including trailing zeros.
+- **Scientific:** scientific notation with a configurable 0 to 12 decimal places in the mantissa.
 
-All seven Phase C3 categories are linear and non-negative.
+Formatting rounds values using HALF_UP. Display precision does not change the conversion engine's internal value.
 
-### Phase C5 scientific conversion conventions
+### Favorites, pins and history
 
-- **Pressure:** canonical pascal. 1 bar = 100,000 Pa and
-  1 standard atmosphere = 101,325 Pa exactly. 1 psi uses the exact
-  pound-force and square inch, i.e.
-  4.4482216152605 N / 0.00064516 m², materialized at 50 significant
-  digits. The conventional millimeter of mercury is
-  133.322387415 Pa (`13,595.1 kg/m³ × 9.80665 m/s² × 0.001 m`); it is
-  not silently conflated with the torr (`101,325/760 Pa`).
-- **Energy:** canonical joule. The calorie is the **thermochemical**
-  calorie, exactly 4.184 J, so 1 kcal = 4,184 J. 1 Wh = 3,600 J,
-  1 kWh = 3,600,000 J, and 1 eV = 1.602176634×10⁻¹⁹ J exactly.
-- **Power:** canonical watt. Mechanical/imperial horsepower (`hp`) is
-  exactly 550 ft·lbf/s = 745.69987158227022 W. Metric horsepower
-  (`PS`) is a separate unit, exactly 735.49875 W.
-- **Force:** canonical Newton. 1 lbf = 4.4482216152605 N exactly and
-  1 dyn = 10⁻⁵ N. Signed values are accepted for directed force
-  components.
-- **Frequency:** canonical hertz. `rpm` is included strictly as a
-  rotational frequency: 1 rpm = 1/60 Hz and 60 rpm = 1 Hz. It is not
-  angular velocity in rad/s (60 rpm would be 2π rad/s).
-- **Angle:** canonical degree, preserving exact 1 turn = 360° and
-  1 gon = 0.9°. The radian factor is 180/π degrees at 50 significant
-  digits. Signed angles are accepted.
-- **Torque:** canonical Newton meter. 1 lbf·ft =
-  1.3558179483314004 N·m and 1 lbf·in = 0.1129848290276167 N·m.
-  Signed values are accepted. Torque remains deliberately separate
-  from Energy: joules and Newton meters are dimensionally equivalent
-  but do not measure the same physical quantity, so the catalog never
-  silently converts one into the other.
+- Favorite a specific source-to-target unit pair.
+- Pin frequent pairs for quick access from the Convert screen.
+- Copy a valid result to save it to history.
+- Restore a saved conversion without losing the ability to edit the input.
+- Keep your saved library between app launches.
 
-The conversion engine and parser are covered by JVM unit tests. The
-formatter includes an explicit Scientific precision mode while
-preserving the established Smart/Fixed behavior and the `-1E-10`
-contract. The implementation adds no new dependency. The current test
-suite contains 153 JVM tests, covering conversion behavior, number
-formatting and parsing, catalog integrity, preferences, navigation,
-search, and the conversion library. Existing inventory assertions were
-extended for the current catalog; no test or assertion was deleted to
-make a failing behavior pass.
+### Languages and themes
 
-## Scope and future work
+Choose **System**, **Light** or **Dark** appearance. The interface language can follow your device or be set independently to **French, English, Spanish, Portuguese, German, Italian, Simplified Chinese, Japanese, Korean or Arabic**.
 
-The current release contains the 17 categories and 110 units documented
-above. Future catalog additions should be based on verified conversion
-definitions and covered by tests.
-## Application identity and signing
+## 📥 Download and install
 
-The release application ID is `com.kirilliodas.unitconverter`.
-The Kotlin namespace remains `app.unitconverter`.
+1. Open the [latest GitHub Release](https://github.com/kiriliodas/Unit-Converter-V2/releases/latest).
+2. Download the APK attached to the release.
+3. Open the downloaded file on your Android device and follow Android's installation prompts.
 
-Release signing is configured in `app/build.gradle.kts`. The keystore
-is stored outside this repository. Passwords are supplied through the
-environment variables `UNIT_CONVERTER_STORE_PASSWORD` and
-`UNIT_CONVERTER_KEY_PASSWORD`. The optional
-`UNIT_CONVERTER_KEYSTORE` variable selects a custom keystore path.
+> **Compatibility:** Android 8.0 (API 26) or later.
 
-Never commit a keystore, signing password, or local machine configuration.
+If Android asks you to allow installation from that source, only continue if you downloaded the APK from this project's official GitHub Releases page and trust the source.
 
-## Build prerequisites
+## 🔒 Privacy by design
 
-- Windows with a compatible Android SDK installed
+Unit Converter is designed to work **offline and locally**.
+
+- No account is required.
+- No analytics or advertising SDKs are included.
+- The app does not request the Android network permission.
+- Favorites, pins, history and display preferences are stored in app-private local preferences.
+
+Your saved conversion library is not sent to a remote service by the app.
+
+## 🛠️ Build from source
+
+### Requirements
+
 - JDK 17
 - Android SDK Platform 36 and the required build tools
-- Network access on the first build so Gradle can download dependencies
+- Network access for the first Gradle build
+- Windows PowerShell for the commands below
 
-The Gradle Wrapper is included in this repository and pins Gradle 8.13.
-Do not replace the pinned Android Gradle Plugin, Kotlin, or Compose
-versions without testing the resulting toolchain.
+The repository includes the Gradle Wrapper and pins Gradle 8.13.
 
-### Build commands
+### Build and test
 
-Run these commands from the repository root:
+Clone the repository, then open PowerShell in its root directory:
 
 ```powershell
+git clone https://github.com/kiriliodas/Unit-Converter-V2.git
+cd Unit-Converter-V2
+
 .\gradlew.bat :app:compileDebugKotlin
 .\gradlew.bat :app:testDebugUnitTest
 .\gradlew.bat :app:lintDebug
 .\gradlew.bat :app:assembleDebug
 ```
 
-To build the signed release APK, configure the three signing environment
-variables described above, then run:
+To create a release APK, configure the signing environment variables expected by `app/build.gradle.kts`:
+
+- `UNIT_CONVERTER_STORE_PASSWORD`
+- `UNIT_CONVERTER_KEY_PASSWORD`
+- `UNIT_CONVERTER_KEYSTORE` (optional custom keystore path)
+
+Then run:
 
 ```powershell
 .\gradlew.bat :app:assembleRelease
 ```
 
-The debug APK is generated at
-`app/build/outputs/apk/debug/app-debug.apk`.
+Build outputs are generated under `app/build/outputs/apk/`. Signing keys, passwords, and local machine configuration must stay outside version control.
 
-The release APK is generated at
-`app/build/outputs/apk/release/app-release.apk`.
+### Technical overview
 
-Generated build outputs, local APKs, and signing files are excluded from
-version control. Publish distributable APKs as assets of a GitHub Release.
-### Regression checklist for future releases
+| Item | Details |
+|---|---|
+| Platform | Native Android |
+| Language | Kotlin |
+| UI | Jetpack Compose, Material 3 |
+| Application ID | `com.kirilliodas.unitconverter` |
+| Kotlin namespace | `app.unitconverter` |
+| Current version | `2.0.0` |
+| Version code | `1` |
+| Minimum Android version | Android 8.0 (API 26) |
+| Compile / target SDK | 36 |
+| Build system | Gradle 8.13 Wrapper |
+| Automated tests | 153 JVM unit tests in the current release |
 
-Do not accept offered AGP/Gradle/Kotlin/Compose upgrades: validate the
-pinned matrix as exported. The targeted lint exception already in
-`app/build.gradle.kts` (`disable += "PropertyEscape"`, for the Windows
-`local.properties` reading issue) stays as is; lint itself remains fully
-enabled with `abortOnError = true`.
+The conversion engine, parsing and formatting, unit catalog, preferences, navigation and conversion library are covered by JVM unit tests. The current release was built and validated on Windows, and the release APK was installed and tested on a Samsung Galaxy A23 5G.
 
-```powershell
-.\gradlew.bat :app:testDebugUnitTest
-.\gradlew.bat :app:lintDebug
-.\gradlew.bat :app:assembleDebug
-```
+## 🧭 Conversion conventions
 
-- Tests: expect 153 JVM unit tests. Update this count when tests are
-  added or removed. Reports are generated in
-  `app/build/reports/tests/testDebugUnitTest/`.
-- APK: `app/build/outputs/apk/debug/app-debug.apk`, signed with the
-  standard debug key provided by the SDK tools.
-- Manual check on a Galaxy A23 5G: convert in all 17 categories; test
-  Smart, Fixed at 0/2/12 places, and Scientific for large, tiny,
-  negative, and negative-zero results from both the Convert precision
-  pill and Settings; restart to confirm precision persists; swap units
-  and confirm input/category stay unchanged; exercise every ordered
-  pair among all four bottom destinations, repeatedly tap the current
-  tab, rapidly cycle through all four tabs, and verify Android Back;
-  browse/search every Units
-  category, apply units as source/destination, and check the `B`, `bit`,
-  `km`, and `KM` searches; heart/pin current pairs, use Convert pinned
-  chips, toggle from Favorites/History, restart to confirm persistence,
-  remove a pinned favorite, restore C4/C5 favorites/history, copy
-  valid/invalid results to recheck the history rule, cancel then confirm
-  clear-history, and verify scientific defaults/reference conversions
-  (including 60 rpm = 1 Hz, 180° in radians, hp versus PS, and J not
-  converting to N·m). Retest keyboard/bottom-bar and system-bar insets,
-  reset/sign, invalid/domain messages, all ten offered languages
-  (especially Arabic RTL and Simplified Chinese), System/Light/Dark
-  persistence after restart, picker opening without a keyboard, the
-  fixed swap position across precision modes, TalkBack
-  order/descriptions, rotation/process recreation, 360×640dp-class
-  layouts, and 130%/200% font sizes.
+A few deliberate choices help keep results consistent:
 
-The navigation inset handling and Android theme resources are
-integrated into the current source. No backup files belong under
-`res`. Drawable resource constructor parameters use explicit
-`@param:DrawableRes` annotations. The remaining review items include
-Android backup/data-extraction configuration and the non-fatal native
-library stripping note observed during release packaging.
+- **Digital storage:** decimal SI units use powers of 1,000 (`kB`, `MB`, `GB`); binary IEC units use powers of 1,024 (`KiB`, `MiB`, `GiB`). One byte equals eight bits.
+- **Volume:** teaspoon, tablespoon and cup use US customary definitions, not metric spoons or the US nutrition-label cup.
+- **Horsepower:** mechanical horsepower (`hp`) and metric horsepower (`PS`) are separate units.
+- **Frequency:** `rpm` represents rotational frequency, not angular velocity in radians per second.
+- **Energy and torque:** joules and newton-metres remain separate categories, even though they are dimensionally equivalent.
+- **Calendar units:** months and years are excluded because their duration depends on calendar conventions.
 
-Pinned toolchain (validated during the release build):
+## 🗺️ Project status
 
-- Android Gradle Plugin 8.13.2, Gradle 8.13, JDK 17
-- Kotlin 2.2.21 with the Compose compiler plugin at the same version
-- Compose BOM 2026.04.01 (Compose 1.11); Material 3 version-managed by it
-- Activity Compose 1.13.0, kotlinx-coroutines-android 1.10.2
-- minSdk 26, target/compile SDK 36
+**Version 2.0.0 is released.** The current catalog contains 17 categories and 110 units. Future additions should use verified conversion definitions and include tests.
 
-## Privacy (design)
+Found an issue or have an idea? [Open an issue on GitHub](https://github.com/kiriliodas/Unit-Converter-V2/issues).
 
-Offline and local-only: no network permission, no analytics, no
-advertising SDKs, no accounts. Favorites, pins, history, and display
-settings contain only stable category/unit IDs, user-entered numeric
-text, timestamps, selected precision, theme mode, and language code
-in an app-private preferences file. Android backup is currently
-disabled in the
-manifest, so this local library is not advertised as backed up or
-transferred.
+## 📄 Notices
+
+See [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) for third-party notices.
+
+---
+
+<div align="center">
+
+Made with Kotlin and Jetpack Compose.
+
+**[Download Unit Converter V2.0.0](https://github.com/kiriliodas/Unit-Converter-V2/releases/tag/v2.0.0)**
+
+</div>
