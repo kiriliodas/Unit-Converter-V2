@@ -1,19 +1,28 @@
 <div align="center">
 
-<img src="screenshots/app-showcase.png" alt="Unit Converter V2.0.0 app showcase" width="100%" />
-
-# Unit Converter V2.0.0
-
-**Convert units. Keep it simple.**
-
-A native Android unit converter built with **Kotlin**, **Jetpack Compose** and **Material 3**. Fast, customizable, and designed to work offline.
-
-[![Latest release](https://img.shields.io/github/v/release/kiriliodas/Unit-Converter-V2?style=flat-square&label=latest%20release)](https://github.com/kiriliodas/Unit-Converter-V2/releases/latest)
-[![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=flat-square&logo=android&logoColor=white)](#)
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.2.21-7F52FF?style=flat-square&logo=kotlin&logoColor=white)](#)
-[![Third-party notices](https://img.shields.io/badge/third--party-notices-lightgrey?style=flat-square)](THIRD_PARTY_NOTICES.md)
-
-[**Download the APK**](https://github.com/kiriliodas/Unit-Converter-V2/releases/latest) · [Browse the source](https://github.com/kiriliodas/Unit-Converter-V2) · [Report a bug](https://github.com/kiriliodas/Unit-Converter-V2/issues)
+<table>
+  <tr>
+    <td width="160" align="center" valign="middle">
+      <img src="metadata/icon.png" alt="Unit Converter app icon" width="132" />
+    </td>
+    <td valign="middle">
+      <h1>Unit Converter V2.0.0</h1>
+      <p><strong>Convert units. Keep it simple.</strong></p>
+      <p>A modern native Android converter built with <strong>Kotlin</strong>, <strong>Jetpack Compose</strong> and <strong>Material 3</strong>. Fast, customizable, and ready to work offline.</p>
+      <p>
+        <a href="https://github.com/kiriliodas/Unit-Converter-V2/releases/latest"><img src="https://img.shields.io/github/v/release/kiriliodas/Unit-Converter-V2?style=flat-square&label=latest%20release" alt="Latest release" /></a>
+        <a href="#"><img src="https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=flat-square&logo=android&logoColor=white" alt="Android 8.0 or later" /></a>
+        <a href="#"><img src="https://img.shields.io/badge/Kotlin-2.2.21-7F52FF?style=flat-square&logo=kotlin&logoColor=white" alt="Kotlin 2.2.21" /></a>
+        <a href="THIRD_PARTY_NOTICES.md"><img src="https://img.shields.io/badge/third--party-notices-lightgrey?style=flat-square" alt="Third-party notices" /></a>
+      </p>
+      <p>
+        <a href="https://github.com/kiriliodas/Unit-Converter-V2/releases/latest"><strong>Download APK</strong></a> ·
+        <a href="https://github.com/kiriliodas/Unit-Converter-V2">Browse source</a> ·
+        <a href="https://github.com/kiriliodas/Unit-Converter-V2/issues">Report a bug</a>
+      </p>
+    </td>
+  </tr>
+</table>
 
 </div>
 
