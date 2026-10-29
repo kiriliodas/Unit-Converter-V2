@@ -6,9 +6,9 @@
       <img src="metadata/icon.png" alt="Unit Converter app icon" width="132" />
     </td>
     <td valign="middle">
-      <h1>Unit Converter V2.0.0</h1>
+      <h1>Unit Converter V2</h1>
       <p><strong>Convert units. Keep it simple.</strong></p>
-      <p>A modern native Android converter built with <strong>Kotlin</strong>, <strong>Jetpack Compose</strong> and <strong>Material 3</strong>. Fast, customizable, and ready to work offline.</p>
+      <p>A modern native Android converter built with <strong>Kotlin</strong>, <strong>Jetpack Compose</strong> and <strong>Material 3</strong>. Fast and customizable, with conversions that work fully offline and optional in-app update checks.</p>
       <p>
         <a href="https://github.com/kiriliodas/Unit-Converter-V2/releases/latest"><img src="https://img.shields.io/github/v/release/kiriliodas/Unit-Converter-V2?style=flat-square&label=latest%20release" alt="Latest release" /></a>
         <a href="#"><img src="https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=flat-square&logo=android&logoColor=white" alt="Android 8.0 or later" /></a>
@@ -36,7 +36,8 @@
 - **Save what matters** with favorites, pinned conversions and a history of copied results.
 - **Choose your precision** with Smart, Fixed and Scientific formatting.
 - **Make it yours** with System, Light and Dark themes, plus 10 interface languages.
-- **Works offline** with your library and settings stored locally on your device.
+- **Conversions work offline**, with your library and settings stored locally on your device.
+- **Stay current** with in-app checks for official GitHub releases and user-confirmed APK installation.
 
 ## 📱 Screenshots
 
@@ -119,20 +120,23 @@ Choose **System**, **Light** or **Dark** appearance. The interface language can 
 2. Download the APK attached to the release.
 3. Open the downloaded file on your Android device and follow Android's installation prompts.
 
+Version 2.0.0 users install version 2.1.0 manually once. From version 2.1.0 onward, the app can discover and download later official releases; Android still asks for confirmation before installation.
+
 > **Compatibility:** Android 8.0 (API 26) or later.
 
 If Android asks you to allow installation from that source, only continue if you downloaded the APK from this project's official GitHub Releases page and trust the source.
 
 ## 🔒 Privacy by design
 
-Unit Converter is designed to work **offline and locally**.
+Unit Converter performs all conversions **offline and locally**. Network access is used only for official update discovery and downloads.
 
 - No account is required.
 - No analytics or advertising SDKs are included.
-- The app does not request the Android network permission.
+- The Android Internet permission is used only to contact this project's official GitHub Releases endpoint for update metadata, an optional checksum, and a user-requested APK download.
+- The install-packages permission is used only to hand a validated update APK to Android's standard user-confirmed installer.
 - Favorites, pins, history and display preferences are stored in app-private local preferences.
 
-Your saved conversion library is not sent to a remote service by the app.
+Your conversion inputs, saved library, and preferences are not sent to a remote service by the app.
 
 ## 🛠️ Build from source
 
@@ -171,7 +175,7 @@ Then run:
 .\gradlew.bat :app:assembleRelease
 ```
 
-Build outputs are generated under `app/build/outputs/apk/`. Signing keys, passwords, and local machine configuration must stay outside version control.
+Build outputs are generated under `app/build/outputs/apk/`. The Windows `BUILD-UNIT-CONVERTER.bat` launcher can run the clean/test/lint/signed-release sequence with a complete log. Signing keys, passwords, and local machine configuration must stay outside version control.
 
 ### Technical overview
 
@@ -182,14 +186,14 @@ Build outputs are generated under `app/build/outputs/apk/`. Signing keys, passwo
 | UI | Jetpack Compose, Material 3 |
 | Application ID | `com.kirilliodas.unitconverter` |
 | Kotlin namespace | `app.unitconverter` |
-| Current version | `2.0.0` |
-| Version code | `1` |
+| Current version | `2.1.0` |
+| Version code | `2` |
 | Minimum Android version | Android 8.0 (API 26) |
 | Compile / target SDK | 36 |
 | Build system | Gradle 8.13 Wrapper |
-| Automated tests | 153 JVM unit tests in the current release |
+| Automated tests | 177 JVM unit tests |
 
-The conversion engine, parsing and formatting, unit catalog, preferences, navigation and conversion library are covered by JVM unit tests. The current release was built and validated on Windows, and the release APK was installed and tested on a Samsung Galaxy A23 5G.
+The conversion engine, parsing and formatting, unit catalog, preferences, navigation and conversion library are covered by JVM unit tests. Version 2.0.0 was built and validated on Windows, and its release APK was installed and tested on a Samsung Galaxy A23 5G.
 
 ## 🧭 Conversion conventions
 
@@ -204,7 +208,7 @@ A few deliberate choices help keep results consistent:
 
 ## 🗺️ Project status
 
-**Version 2.0.0 is released.** The current catalog contains 17 categories and 110 units. Future additions should use verified conversion definitions and include tests.
+**Version 2.1.0 adds native in-app updates.** The current catalog contains 17 categories and 110 units. Future additions should use verified conversion definitions and include tests.
 
 Found an issue or have an idea? [Open an issue on GitHub](https://github.com/kiriliodas/Unit-Converter-V2/issues).
 
@@ -218,6 +222,6 @@ See [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) for third-party notices.
 
 Made with Kotlin and Jetpack Compose.
 
-**[Download Unit Converter V2.0.0](https://github.com/kiriliodas/Unit-Converter-V2/releases/tag/v2.0.0)**
+**[Download the latest Unit Converter V2 release](https://github.com/kiriliodas/Unit-Converter-V2/releases/latest)**
 
 </div>

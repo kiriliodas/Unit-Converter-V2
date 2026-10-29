@@ -51,6 +51,8 @@ import androidx.compose.ui.unit.dp
 import app.unitconverter.R
 import app.unitconverter.core.ui.AppIcons
 import app.unitconverter.core.ui.theme.LocalExtendedColors
+import app.unitconverter.feature.update.UpdateManager
+import app.unitconverter.feature.update.UpdateSettingsCard
 
 @StringRes
 private fun themeModeLabelRes(mode: AppThemeMode): Int = when (mode) {
@@ -91,6 +93,7 @@ fun SettingsScreen(
     onPrecisionClick: () -> Unit,
     onThemeModeChange: (AppThemeMode) -> Unit,
     onLanguageChange: (AppLanguage) -> Unit,
+    updateManager: UpdateManager,
     modifier: Modifier = Modifier
 ) {
     val extended = LocalExtendedColors.current
@@ -273,6 +276,10 @@ fun SettingsScreen(
                         )
                     }
                 }
+            }
+
+            SettingsSection(title = stringResource(R.string.update_section_title)) {
+                UpdateSettingsCard(manager = updateManager)
             }
 
             SettingsSection(title = stringResource(R.string.settings_about_title)) {

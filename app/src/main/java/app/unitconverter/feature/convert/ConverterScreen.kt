@@ -124,6 +124,7 @@ import app.unitconverter.core.model.UnitDefinition
 import app.unitconverter.core.model.UnitId
 import app.unitconverter.core.ui.AppIcons
 import app.unitconverter.core.ui.theme.LocalExtendedColors
+import app.unitconverter.feature.update.UpdateManager
 import java.math.BigDecimal
 import java.util.Locale
 import kotlinx.coroutines.Dispatchers
@@ -161,7 +162,8 @@ private val BottomDestinations = listOf(
 @Composable
 fun ConverterScreen(
     appPreferences: AppPreferences,
-    onAppPreferencesChange: (AppPreferences) -> Unit
+    onAppPreferencesChange: (AppPreferences) -> Unit,
+    updateManager: UpdateManager
 ) {
     val catalog = remember { RepresentativeCatalog.catalog }
     val evaluator = remember { ConverterEvaluator(catalog) }
@@ -372,7 +374,8 @@ fun ConverterScreen(
                         },
                         onLanguageChange = { language ->
                             onAppPreferencesChange(appPreferences.copy(language = language))
-                        }
+                        },
+                        updateManager = updateManager
                     )
                 } else {
                     when (animatedRoot) {

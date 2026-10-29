@@ -4,6 +4,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import app.unitconverter.feature.convert.AppPreferences
 import app.unitconverter.feature.convert.ConverterScreen
+import app.unitconverter.feature.update.UpdateHost
 
 /**
  * Root composable below [MainActivity]'s theme and locale application.
@@ -18,9 +19,12 @@ fun UnitConverterApp(
     onAppPreferencesChange: (AppPreferences) -> Unit
 ) {
     Surface {
-        ConverterScreen(
-            appPreferences = appPreferences,
-            onAppPreferencesChange = onAppPreferencesChange
-        )
+        UpdateHost { updateManager ->
+            ConverterScreen(
+                appPreferences = appPreferences,
+                onAppPreferencesChange = onAppPreferencesChange,
+                updateManager = updateManager
+            )
+        }
     }
 }

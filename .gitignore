@@ -28,3 +28,7 @@ signing.properties
 release-assets/
 *.apk
 *.aab
+
+# Local Windows build-launcher outputs
+/build-logs/
+/release-output/

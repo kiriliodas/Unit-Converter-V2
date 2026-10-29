@@ -11,16 +11,15 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        // PROVISIONAL development identity only. This is NOT the production
-        // application ID. It must be replaced after the historical package
-        // identity of the shipped product has been verified separately.
+        // Production application ID. Future update APKs must keep this exact
+        // value and the existing production signing identity.
         applicationId = "com.kirilliodas.unitconverter"
         minSdk = 26
         targetSdk = 36
-        // Development versioning only; the V2.0.0 release versioning is
-        // finalized in the later release-integration step.
-        versionCode = 1
-        versionName = "2.0.0"
+        // V2.1.0 adds the native GitHub in-app update system. Every future
+        // distributed update must increase both values.
+        versionCode = 2
+        versionName = "2.1.0"
     }
 
     androidResources {
@@ -86,6 +85,7 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.core)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.core)
     implementation(libs.kotlinx.coroutines.android)
 
     testImplementation(libs.junit)
