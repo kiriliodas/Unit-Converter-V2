@@ -1,6 +1,7 @@
 package app.unitconverter.feature.convert
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Test
 
@@ -9,6 +10,7 @@ class AppPreferencesTest {
     fun defaultsUseSystemThemeAndPhoneLanguage() {
         assertEquals(AppThemeMode.SYSTEM, AppPreferences().themeMode)
         assertEquals(AppLanguage.SYSTEM, AppPreferences().language)
+        assertFalse(AppPreferences().dynamicColorEnabled)
         assertNull(AppLanguage.SYSTEM.locale())
         assertEquals(AppPreferences(), AppPreferencesSerializer.decode(null))
         assertEquals(AppPreferences(), AppPreferencesSerializer.decode(""))
@@ -20,7 +22,8 @@ class AppPreferencesTest {
         val store = SerializedAppPreferencesStore(storage)
         val expected = AppPreferences(
             themeMode = AppThemeMode.DARK,
-            language = AppLanguage.CHINESE_SIMPLIFIED
+            language = AppLanguage.CHINESE_SIMPLIFIED,
+            dynamicColorEnabled = true
         )
 
         store.save(expected)
@@ -29,6 +32,26 @@ class AppPreferencesTest {
         assertEquals(
             expected,
             AppPreferencesSerializer.decode(storage.read(SerializedAppPreferencesStore.STORAGE_KEY))
+        )
+    }
+
+    @Test
+    fun preferencesSavedByV210DefaultDynamicColorOff() {
+        val decoded = AppPreferencesSerializer.decode(
+            listOf(
+                "UC_APP_PREFERENCES_V1",
+                "THEME\tDARK",
+                "LANGUAGE\tfr"
+            ).joinToString(separator = "\n")
+        )
+
+        assertEquals(
+            AppPreferences(
+                themeMode = AppThemeMode.DARK,
+                language = AppLanguage.FRENCH,
+                dynamicColorEnabled = false
+            ),
+            decoded
         )
     }
 
@@ -61,6 +84,7 @@ class AppPreferencesTest {
                 "UC_APP_PREFERENCES_V1",
                 "THEME\tSOLARIZED",
                 "LANGUAGE\txx-YY",
+                "DYNAMIC_COLOR\tMAYBE",
                 "UNKNOWN\tvalue",
                 "broken-line"
             ).joinToString(separator = "\n")

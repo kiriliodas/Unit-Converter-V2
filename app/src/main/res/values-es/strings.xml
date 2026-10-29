@@ -13,6 +13,9 @@
     <string name="theme_system">Sistema</string>
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Oscuro</string>
+    <string name="material_you_title">Material You</string>
+    <string name="material_you_summary">Usar colores basados en tu fondo de pantalla y la paleta del sistema.</string>
+    <string name="material_you_unavailable">Requiere Android 12 o posterior.</string>
     <string name="language_title">Idioma</string>
     <string name="language_system">Idioma del teléfono</string>
     <string name="language_name_french">Français</string>

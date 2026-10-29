@@ -372,6 +372,11 @@ fun ConverterScreen(
                         onThemeModeChange = { mode ->
                             onAppPreferencesChange(appPreferences.copy(themeMode = mode))
                         },
+                        onDynamicColorChange = { enabled ->
+                            onAppPreferencesChange(
+                                appPreferences.copy(dynamicColorEnabled = enabled)
+                            )
+                        },
                         onLanguageChange = { language ->
                             onAppPreferencesChange(appPreferences.copy(language = language))
                         },

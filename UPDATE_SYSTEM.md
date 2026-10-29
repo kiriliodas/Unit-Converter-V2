@@ -11,19 +11,19 @@ wrapper, README structure, metadata, or screenshots.
 | Item | This merged source |
 |---|---|
 | Application ID | `com.kirilliodas.unitconverter` |
-| Version | `2.1.0`, code `2` |
-| Previous shipped release | `2.0.0`, code `1` |
+| Version | `2.1.1`, code `3` |
+| Previous shipped release | `2.1.0`, code `2` |
 | Signing | Existing production keystore/alias on the owner's Windows PC; no key or password is stored in this project export |
 | Gradle wrapper | Included from the production tree |
-| Git state | The replacement ZIP includes the `.git` directory from the supplied production snapshot; review `git status` after replacement |
+| Git state | This v2.1.1 source export intentionally contains no `.git` directory; apply it over the existing repository and review `git status` so the published v2.1.0 history and tags are preserved |
 
 This source is **not yet a validated release**. It must pass the included
 Windows clean/test/lint/signed-build launcher and the manual device checklist
 below before it is tagged or published.
 
-The currently released v2.0.0 app does not contain this updater. Version
-2.1.0 must be installed manually from GitHub once; only later releases can be
-discovered by the in-app system in 2.1.0.
+The currently released v2.1.0 app contains this updater. Version 2.1.1 is
+the first release intended to be discovered, downloaded, validated, and
+handed to Android's installer from inside an installed v2.1.0 build.
 
 ## User experience
 

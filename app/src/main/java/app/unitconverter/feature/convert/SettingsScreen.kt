@@ -1,5 +1,6 @@
 package app.unitconverter.feature.convert
 
+import android.os.Build
 import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
@@ -19,6 +20,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -29,6 +31,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
@@ -50,6 +53,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import app.unitconverter.R
 import app.unitconverter.core.ui.AppIcons
+import app.unitconverter.core.ui.theme.DynamicColorPolicy
 import app.unitconverter.core.ui.theme.LocalExtendedColors
 import app.unitconverter.feature.update.UpdateManager
 import app.unitconverter.feature.update.UpdateSettingsCard
@@ -92,12 +96,15 @@ fun SettingsScreen(
     onBack: () -> Unit,
     onPrecisionClick: () -> Unit,
     onThemeModeChange: (AppThemeMode) -> Unit,
+    onDynamicColorChange: (Boolean) -> Unit,
     onLanguageChange: (AppLanguage) -> Unit,
     updateManager: UpdateManager,
     modifier: Modifier = Modifier
 ) {
     val extended = LocalExtendedColors.current
     val context = LocalContext.current
+    val dynamicColorSupported = DynamicColorPolicy.isSupported(Build.VERSION.SDK_INT)
+    val dynamicColorChecked = dynamicColorSupported && appPreferences.dynamicColorEnabled
     val chevronRotation = if (LocalLayoutDirection.current == LayoutDirection.Rtl) {
         90f
     } else {
@@ -172,6 +179,56 @@ fun SettingsScreen(
                                 onClick = { onThemeModeChange(mode) }
                             )
                         }
+                    }
+                }
+
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(24.dp),
+                    color = extended.panel,
+                    contentColor = MaterialTheme.colorScheme.onSurface,
+                    border = BorderStroke(1.dp, extended.panelBorder)
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .heightIn(min = 72.dp)
+                            .toggleable(
+                                value = dynamicColorChecked,
+                                enabled = dynamicColorSupported,
+                                role = Role.Switch,
+                                onValueChange = onDynamicColorChange
+                            )
+                            .padding(horizontal = 16.dp, vertical = 12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = stringResource(R.string.material_you_title),
+                                style = MaterialTheme.typography.titleMedium,
+                                maxLines = 2,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                            Text(
+                                text = stringResource(
+                                    if (dynamicColorSupported) {
+                                        R.string.material_you_summary
+                                    } else {
+                                        R.string.material_you_unavailable
+                                    }
+                                ),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                maxLines = 3,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
+                        Spacer(Modifier.width(12.dp))
+                        Switch(
+                            checked = dynamicColorChecked,
+                            onCheckedChange = null,
+                            enabled = dynamicColorSupported
+                        )
                     }
                 }
             }

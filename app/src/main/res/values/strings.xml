@@ -15,6 +15,9 @@
     <string name="theme_system">System</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
+    <string name="material_you_title">Material You</string>
+    <string name="material_you_summary">Use colors based on your wallpaper and system palette.</string>
+    <string name="material_you_unavailable">Requires Android 12 or later.</string>
     <string name="language_title">Language</string>
     <string name="language_system">Phone language</string>
     <string name="language_name_french">Français</string>

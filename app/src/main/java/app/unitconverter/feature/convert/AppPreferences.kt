@@ -48,7 +48,8 @@ enum class AppLanguage(
 /** Small app-level preferences that must be known before first composition. */
 data class AppPreferences(
     val themeMode: AppThemeMode = AppThemeMode.SYSTEM,
-    val language: AppLanguage = AppLanguage.SYSTEM
+    val language: AppLanguage = AppLanguage.SYSTEM,
+    val dynamicColorEnabled: Boolean = false
 )
 
 interface AppPreferencesStore {
@@ -90,6 +91,7 @@ object AppPreferencesSerializer {
     private const val HEADER = "UC_APP_PREFERENCES_V1"
     private const val THEME_RECORD = "THEME"
     private const val LANGUAGE_RECORD = "LANGUAGE"
+    private const val DYNAMIC_COLOR_RECORD = "DYNAMIC_COLOR"
     private const val SEPARATOR = "\t"
 
     fun encode(preferences: AppPreferences): String = buildString {
@@ -100,6 +102,9 @@ object AppPreferencesSerializer {
         append(LANGUAGE_RECORD)
         append(SEPARATOR)
         appendLine(preferences.language.code)
+        append(DYNAMIC_COLOR_RECORD)
+        append(SEPARATOR)
+        appendLine(if (preferences.dynamicColorEnabled) "1" else "0")
     }
 
     fun decode(serialized: String?): AppPreferences {
@@ -122,6 +127,18 @@ object AppPreferencesSerializer {
                         preferences = preferences.copy(
                             language = AppLanguage.fromCode(parts[1])
                         )
+                    }
+
+                    DYNAMIC_COLOR_RECORD -> {
+                        when (parts[1]) {
+                            "1" -> preferences = preferences.copy(
+                                dynamicColorEnabled = true
+                            )
+
+                            "0" -> preferences = preferences.copy(
+                                dynamicColorEnabled = false
+                            )
+                        }
                     }
                 }
             }

@@ -60,7 +60,10 @@ class MainActivity : ComponentActivity() {
                 applyEdgeToEdge(darkTheme)
             }
 
-            UnitConverterTheme(darkTheme = darkTheme) {
+            UnitConverterTheme(
+                darkTheme = darkTheme,
+                dynamicColorEnabled = appPreferences.dynamicColorEnabled
+            ) {
                 UnitConverterApp(
                     appPreferences = appPreferences,
                     onAppPreferencesChange = { updated ->

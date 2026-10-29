@@ -13,6 +13,9 @@
     <string name="theme_system">시스템</string>
     <string name="theme_light">밝게</string>
     <string name="theme_dark">어둡게</string>
+    <string name="material_you_title">Material You</string>
+    <string name="material_you_summary">배경화면과 시스템 팔레트를 기반으로 한 색상을 사용합니다.</string>
+    <string name="material_you_unavailable">Android 12 이상이 필요합니다.</string>
     <string name="language_title">언어</string>
     <string name="language_system">휴대전화 언어</string>
     <string name="language_name_french">Français</string>

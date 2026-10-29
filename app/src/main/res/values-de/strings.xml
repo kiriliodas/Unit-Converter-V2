@@ -13,6 +13,9 @@
     <string name="theme_system">System</string>
     <string name="theme_light">Hell</string>
     <string name="theme_dark">Dunkel</string>
+    <string name="material_you_title">Material You</string>
+    <string name="material_you_summary">Farben verwenden, die auf deinem Hintergrundbild und der Systempalette basieren.</string>
+    <string name="material_you_unavailable">Erfordert Android 12 oder neuer.</string>
     <string name="language_title">Sprache</string>
     <string name="language_system">Telefonsprache</string>
     <string name="language_name_french">Français</string>

@@ -13,6 +13,9 @@
     <string name="theme_system">システム</string>
     <string name="theme_light">ライト</string>
     <string name="theme_dark">ダーク</string>
+    <string name="material_you_title">Material You</string>
+    <string name="material_you_summary">壁紙とシステム パレットに基づく色を使用します。</string>
+    <string name="material_you_unavailable">Android 12 以降が必要です。</string>
     <string name="language_title">言語</string>
     <string name="language_system">端末の言語</string>
     <string name="language_name_french">Français</string>

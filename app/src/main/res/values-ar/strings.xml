@@ -13,6 +13,9 @@
     <string name="theme_system">النظام</string>
     <string name="theme_light">فاتح</string>
     <string name="theme_dark">داكن</string>
+    <string name="material_you_title">Material You</string>
+    <string name="material_you_summary">استخدام ألوان مستندة إلى الخلفية ولوحة ألوان النظام.</string>
+    <string name="material_you_unavailable">يتطلب Android 12 أو أحدث.</string>
     <string name="language_title">اللغة</string>
     <string name="language_system">لغة الهاتف</string>
     <string name="language_name_french">Français</string>

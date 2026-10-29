@@ -112,7 +112,7 @@ Formatting rounds values using HALF_UP. Display precision does not change the co
 
 ### Languages and themes
 
-Choose **System**, **Light** or **Dark** appearance. The interface language can follow your device or be set independently to **French, English, Spanish, Portuguese, German, Italian, Simplified Chinese, Japanese, Korean or Arabic**.
+Choose **System**, **Light** or **Dark** appearance. On Android 12 or later, optional **Material You** dynamic color can adapt the interface to your wallpaper and system palette; the monochrome appearance remains the default. The interface language can follow your device or be set independently to **French, English, Spanish, Portuguese, German, Italian, Simplified Chinese, Japanese, Korean or Arabic**.
 
 ## 📥 Download and install
 
@@ -120,7 +120,7 @@ Choose **System**, **Light** or **Dark** appearance. The interface language can 
 2. Download the APK attached to the release.
 3. Open the downloaded file on your Android device and follow Android's installation prompts.
 
-Version 2.0.0 users install version 2.1.0 manually once. From version 2.1.0 onward, the app can discover and download later official releases; Android still asks for confirmation before installation.
+Version 2.0.0 users install the current release manually once. From version 2.1.0 onward, the app can discover and download later official releases; Android still asks for confirmation before installation.
 
 > **Compatibility:** Android 8.0 (API 26) or later.
 
@@ -186,12 +186,12 @@ Build outputs are generated under `app/build/outputs/apk/`. The Windows `BUILD-U
 | UI | Jetpack Compose, Material 3 |
 | Application ID | `com.kirilliodas.unitconverter` |
 | Kotlin namespace | `app.unitconverter` |
-| Current version | `2.1.0` |
-| Version code | `2` |
+| Current version | `2.1.1` |
+| Version code | `3` |
 | Minimum Android version | Android 8.0 (API 26) |
 | Compile / target SDK | 36 |
 | Build system | Gradle 8.13 Wrapper |
-| Automated tests | 177 JVM unit tests |
+| Automated tests | 180 JVM unit tests |
 
 The conversion engine, parsing and formatting, unit catalog, preferences, navigation and conversion library are covered by JVM unit tests. Version 2.0.0 was built and validated on Windows, and its release APK was installed and tested on a Samsung Galaxy A23 5G.
 
@@ -208,7 +208,7 @@ A few deliberate choices help keep results consistent:
 
 ## 🗺️ Project status
 
-**Version 2.1.0 adds native in-app updates.** The current catalog contains 17 categories and 110 units. Future additions should use verified conversion definitions and include tests.
+**Version 2.1.1 adds optional Material You dynamic color; version 2.1.0 added native in-app updates.** The current catalog contains 17 categories and 110 units. Future additions should use verified conversion definitions and include tests.
 
 Found an issue or have an idea? [Open an issue on GitHub](https://github.com/kiriliodas/Unit-Converter-V2/issues).
 

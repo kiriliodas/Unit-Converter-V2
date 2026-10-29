@@ -16,10 +16,11 @@ android {
         applicationId = "com.kirilliodas.unitconverter"
         minSdk = 26
         targetSdk = 36
-        // V2.1.0 adds the native GitHub in-app update system. Every future
+        // V2.1.0 added the native GitHub in-app update system; v2.1.1
+        // adds optional Material You dynamic color. Every future
         // distributed update must increase both values.
-        versionCode = 2
-        versionName = "2.1.0"
+        versionCode = 3
+        versionName = "2.1.1"
     }
 
     androidResources {

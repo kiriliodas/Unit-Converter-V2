@@ -13,6 +13,9 @@
     <string name="theme_system">系统</string>
     <string name="theme_light">浅色</string>
     <string name="theme_dark">深色</string>
+    <string name="material_you_title">Material You</string>
+    <string name="material_you_summary">使用基于壁纸和系统配色的颜色。</string>
+    <string name="material_you_unavailable">需要 Android 12 或更高版本。</string>
     <string name="language_title">语言</string>
     <string name="language_system">手机语言</string>
     <string name="language_name_french">Français</string>
