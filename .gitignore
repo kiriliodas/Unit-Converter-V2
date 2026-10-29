@@ -32,3 +32,9 @@ release-assets/
 # Local Windows build-launcher outputs
 /build-logs/
 /release-output/
+
+# Accidental local diagnostic captures
+*.log
+*.tmp
+*.bak
+*~
