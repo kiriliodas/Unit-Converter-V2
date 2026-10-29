@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light launch theme for the monochrome Phase C6 identity. -->
+    <style name="Theme.UnitConverter" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#0A0A0A</item>
+        <item name="android:colorBackground">#F5F5F5</item>
+        <item name="android:windowBackground">#F5F5F5</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

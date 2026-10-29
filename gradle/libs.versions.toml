@@ -1,0 +1,31 @@
+# Version matrix pinned for Phase C1 after checking official release notes:
+# - AGP 8.13.2 pairs with Gradle 8.13 and JDK 17, supports API 36.1 max.
+# - The AGP 8.13 documentation example pins Kotlin 2.2.21.
+# - Compose BOM 2026.04.01 is the stable April '26 Compose 1.11 train.
+# - Activity Compose 1.13.0 is the stable Activity release of March 2026.
+# Deliberately NOT the AGP 9 / Gradle 9 line yet: AGP 9 changes the DSL and
+# removes the Kotlin Android Gradle plugin (built-in Kotlin). Migrating to it
+# deserves its own verified step once the project can be compiled.
+[versions]
+agp = "8.13.2"
+kotlin = "2.2.21"
+composeBom = "2026.04.01"
+activityCompose = "1.13.0"
+coroutines = "1.10.2"
+junit = "4.13.2"
+
+[libraries]
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+# The following Compose artifacts are version-managed by the BOM above.
+androidx-compose-ui = { module = "androidx.compose.ui:ui" }
+androidx-compose-foundation = { module = "androidx.compose.foundation:foundation" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
+androidx-compose-material-icons-core = { module = "androidx.compose.material:material-icons-core" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+junit = { module = "junit:junit", version.ref = "junit" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

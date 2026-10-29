@@ -1,0 +1,30 @@
+# Gradle and generated build outputs
+.gradle/
+.kotlin/
+**/build/
+buildOutputCleanup/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Local machine configuration
+local.properties
+
+# Signing keys and secrets
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.keystore.properties
+keystore.properties
+signing.properties
+
+# Backups and IDE files
+*.backup*
+.idea/
+*.iml/
+
+# Distribution binaries are attached to GitHub Releases
+release-assets/
+*.apk
+*.aab
