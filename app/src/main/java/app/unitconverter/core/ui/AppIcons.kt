@@ -29,6 +29,7 @@ object AppIcons {
     val Pin = SymbolPair(R.drawable.ic_symbol_push_pin, R.drawable.ic_symbol_push_pin_filled)
 
     @DrawableRes val Settings: Int = R.drawable.ic_symbol_settings_filled
+    @DrawableRes val Flag: Int = R.drawable.ic_symbol_flag
     @DrawableRes val Swap: Int = R.drawable.ic_symbol_swap_vert
     @DrawableRes val Copy: Int = R.drawable.ic_symbol_content_copy
     @DrawableRes val Check: Int = R.drawable.ic_symbol_check

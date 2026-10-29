@@ -114,6 +114,10 @@ Formatting rounds values using HALF_UP. Display precision does not change the co
 
 Choose **System**, **Light** or **Dark** appearance. On Android 12 or later, optional **Material You** dynamic color can adapt the interface to your wallpaper and system palette; the monochrome appearance remains the default. The interface language can follow your device or be set independently to **French, English, Spanish, Portuguese, German, Italian, Simplified Chinese, Japanese, Korean or Arabic**.
 
+### Support
+
+Use the flag button beside Settings on the Convert screen, or **Settings > Support > Report a problem**, to prepare a support email from inside the app. You can add a description, optional reproduction steps, and up to five attachments. Your email app opens with the report and minimal technical details filled in, and you decide whether to edit or send it.
+
 ## 📥 Download and install
 
 1. Open the [latest GitHub Release](https://github.com/kiriliodas/Unit-Converter-V2/releases/latest).
@@ -135,6 +139,7 @@ Unit Converter performs all conversions **offline and locally**. Network access 
 - The Android Internet permission is used only to contact this project's official GitHub Releases endpoint for update metadata, an optional checksum, and a user-requested APK download.
 - The install-packages permission is used only to hand a validated update APK to Android's standard user-confirmed installer.
 - Favorites, pins, history and display preferences are stored in app-private local preferences.
+- The problem-report form only prepares a message in your email app when you ask it to. Attachments are files you explicitly select; conversions, favorites, and history are not attached or sent automatically.
 
 Your conversion inputs, saved library, and preferences are not sent to a remote service by the app.
 
@@ -186,12 +191,12 @@ Build outputs are generated under `app/build/outputs/apk/`. The Windows `BUILD-U
 | UI | Jetpack Compose, Material 3 |
 | Application ID | `com.kirilliodas.unitconverter` |
 | Kotlin namespace | `app.unitconverter` |
-| Current version | `2.1.1` |
-| Version code | `3` |
+| Current version | `2.1.2` |
+| Version code | `4` |
 | Minimum Android version | Android 8.0 (API 26) |
 | Compile / target SDK | 36 |
 | Build system | Gradle 8.13 Wrapper |
-| Automated tests | 180 JVM unit tests |
+| Automated tests | 185 JVM unit tests |
 
 The conversion engine, parsing and formatting, unit catalog, preferences, navigation and conversion library are covered by JVM unit tests. Version 2.0.0 was built and validated on Windows, and its release APK was installed and tested on a Samsung Galaxy A23 5G.
 
@@ -208,7 +213,7 @@ A few deliberate choices help keep results consistent:
 
 ## 🗺️ Project status
 
-**Version 2.1.1 adds optional Material You dynamic color; version 2.1.0 added native in-app updates.** The current catalog contains 17 categories and 110 units. Future additions should use verified conversion definitions and include tests.
+**Version 2.1.2 adds an in-app problem-report form; version 2.1.1 added optional Material You dynamic color, and version 2.1.0 added native in-app updates.** The current catalog contains 17 categories and 110 units. Future additions should use verified conversion definitions and include tests.
 
 Found an issue or have an idea? [Open an issue on GitHub](https://github.com/kiriliodas/Unit-Converter-V2/issues).
 

@@ -103,10 +103,11 @@ identify the first real error. Do not send signing secrets.
 
 ## Version warning
 
-This merged Windows tree is version `2.1.1`, versionCode `3`, contains
-the native in-app update implementation from v2.1.0, and adds optional
-Material You dynamic color. The launcher validates and builds
-whatever source is currently in the Windows folder.
+This merged Windows tree is version `2.1.2`, versionCode `4`, contains
+the native in-app update implementation from v2.1.0, optional Material
+You dynamic color from v2.1.1, and the in-app support report form. The
+launcher validates and builds whatever source is currently in the
+Windows folder.
 
 Before publishing a real update, both values in `app/build.gradle.kts` must
 be increased, for example to a newer semantic version and a larger integer

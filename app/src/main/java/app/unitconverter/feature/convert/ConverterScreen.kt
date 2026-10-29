@@ -124,6 +124,7 @@ import app.unitconverter.core.model.UnitDefinition
 import app.unitconverter.core.model.UnitId
 import app.unitconverter.core.ui.AppIcons
 import app.unitconverter.core.ui.theme.LocalExtendedColors
+import app.unitconverter.feature.support.SupportReportSheet
 import app.unitconverter.feature.update.UpdateManager
 import java.math.BigDecimal
 import java.util.Locale
@@ -183,6 +184,7 @@ fun ConverterScreen(
     }
     val destination = navigationState.destination
     var settingsOpen by rememberSaveable { mutableStateOf(false) }
+    var supportSheetOpen by rememberSaveable { mutableStateOf(false) }
     var precisionSheetOpen by rememberSaveable { mutableStateOf(false) }
     var browseCategoryValue by rememberSaveable { mutableStateOf<String?>(null) }
     val browseCategoryId = browseCategoryValue?.let { value ->
@@ -399,6 +401,7 @@ fun ConverterScreen(
                             copied = copyCount > 0,
                             format = formatValue,
                             onSettingsClick = { settingsOpen = true },
+                            onReportProblemClick = { supportSheetOpen = true },
                             onPinnedSelect = { favorite ->
                                 categoryId = favorite.categoryId.value
                                 fromId = favorite.fromId.value
@@ -607,6 +610,12 @@ fun ConverterScreen(
             onDismiss = { precisionSheetOpen = false }
         )
     }
+
+    if (supportSheetOpen) {
+        SupportReportSheet(
+            onDismiss = { supportSheetOpen = false }
+        )
+    }
 }
 
 @Composable
@@ -811,6 +820,7 @@ private fun HomeContent(
     copied: Boolean,
     format: (BigDecimal) -> String,
     onSettingsClick: () -> Unit,
+    onReportProblemClick: () -> Unit,
     onPinnedSelect: (FavoriteConversion) -> Unit,
     onInputChange: (String) -> Unit,
     onClearInput: () -> Unit,
@@ -845,6 +855,16 @@ private fun HomeContent(
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
+                IconButton(
+                    onClick = onReportProblemClick,
+                    modifier = Modifier.size(48.dp)
+                ) {
+                    SymbolIcon(
+                        iconRes = AppIcons.Flag,
+                        contentDescription = stringResource(R.string.support_report_title),
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
                 IconButton(
                     onClick = onSettingsClick,
                     modifier = Modifier.size(48.dp)

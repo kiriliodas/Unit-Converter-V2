@@ -55,6 +55,7 @@ import app.unitconverter.R
 import app.unitconverter.core.ui.AppIcons
 import app.unitconverter.core.ui.theme.DynamicColorPolicy
 import app.unitconverter.core.ui.theme.LocalExtendedColors
+import app.unitconverter.feature.support.SupportReportSheet
 import app.unitconverter.feature.update.UpdateManager
 import app.unitconverter.feature.update.UpdateSettingsCard
 
@@ -111,6 +112,7 @@ fun SettingsScreen(
         -90f
     }
     var languageSheetOpen by rememberSaveable { mutableStateOf(false) }
+    var supportSheetOpen by rememberSaveable { mutableStateOf(false) }
     val versionName = remember(context) {
         runCatching {
             context.packageManager
@@ -339,6 +341,63 @@ fun SettingsScreen(
                 UpdateSettingsCard(manager = updateManager)
             }
 
+            SettingsSection(title = stringResource(R.string.support_title)) {
+                Surface(
+                    onClick = { supportSheetOpen = true },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(24.dp),
+                    color = extended.panel,
+                    contentColor = MaterialTheme.colorScheme.onSurface,
+                    border = BorderStroke(1.dp, extended.panelBorder)
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .heightIn(min = 72.dp)
+                            .padding(horizontal = 16.dp, vertical = 12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Surface(
+                            modifier = Modifier.size(44.dp),
+                            shape = RoundedCornerShape(14.dp),
+                            color = MaterialTheme.colorScheme.surfaceContainer,
+                            contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        ) {
+                            Box(contentAlignment = Alignment.Center) {
+                                SymbolIcon(
+                                    iconRes = AppIcons.Flag,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(23.dp)
+                                )
+                            }
+                        }
+                        Spacer(Modifier.width(12.dp))
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = stringResource(R.string.support_report_title),
+                                style = MaterialTheme.typography.titleMedium,
+                                maxLines = 2,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                            Text(
+                                text = stringResource(R.string.support_report_summary),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                maxLines = 2,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
+                        SymbolIcon(
+                            iconRes = AppIcons.ExpandMore,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(24.dp)
+                                .rotate(chevronRotation),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+
             SettingsSection(title = stringResource(R.string.settings_about_title)) {
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
@@ -385,6 +444,16 @@ fun SettingsScreen(
             onSelect = { language ->
                 languageSheetOpen = false
                 if (language != appPreferences.language) onLanguageChange(language)
+            }
+        )
+    }
+
+    if (supportSheetOpen) {
+        SupportReportSheet(
+            onDismiss = { supportSheetOpen = false },
+            onCompleted = {
+                supportSheetOpen = false
+                onBack()
             }
         )
     }
